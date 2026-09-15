@@ -2,9 +2,79 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Design My CV</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+            }
+            .a4-card{
+                width: 210mm;
+                height: 297mm;
+                max-width: 90vw;
+                max-height: 90vh;
+                aspect-ratio: 1 / 1.414;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                border-radius: 4px;
+                box-sizing: border-box;
+                padding: 20mm;
+            }
+
+            .editor-wrapper{
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+            }
+            .side-menu{
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 25%;
+                background: #ffffff;
+                padding: 15px;
+                border-radius: 6px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            .side-menu label{
+                display: block;
+                font-weight: bold;
+                font-size: 14px;
+                margin-bottom: 8px;
+                color: #333;
+            }
+            .side-menu select{
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                background-color: #fff;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="a4-card">
+            <!-- paper content goes here-->
+             <h2>CV Justin</h2>
+             <p>Add content here...</p>
+        </div>
+
+        <!--Right-side pulldown-->
+        <div class="side-menu">
+            <label for="template-select">CV Options</label>
+            <select id="template-select">
+                <option value="classic">Classic Template</option>
+                <option value="modern">Modern Template</option>
+                <option value="minimal">Minimal Template</option>
+            </select>
+        </div>
     </body>
 </html>
