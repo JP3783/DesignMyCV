@@ -7,12 +7,15 @@
         <style>
             body{
                 margin: 0;
-                padding: 0;
+                padding: 20px;
                 min-height: 100vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+                box-sizing: border-box;
+                overflow-x: hidden;
             }
             .a4-card{
                 width: 210mm;
@@ -25,8 +28,10 @@
                 border-radius: 4px;
                 box-sizing: border-box;
                 padding: 20mm;
+                overflow: auto;
             }
 
+            /* right-side menu stuff */
             .editor-wrapper{
                 position: relative;
                 display: flex;
@@ -58,13 +63,72 @@
                 background-color: #fff;
                 cursor: pointer;
             }
+
+            /* left-side tab */
+            .left-drawer{
+                position: fixed;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%) translateX(-400px); /*hidden off-screen by default*/
+                width: 400px;
+                background-color: #ffffff;
+                box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+                border-radius: 0 8px 8px 0;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+            }
+            .left-drawer.open{
+                transform: translateY(-50%) translateX(0);
+            }
+            .drawer-content{
+                padding: 20px;
+            }
+            .drawer-content h3{
+                margin-top: 0;
+                font-size: 16px;
+                color: #333;
+            }
+            .drawer-toggle{
+                position: absolute;
+                top: 50%;
+                right: -40px;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 50px;
+                background-color: #ffffff;
+                border-radius: 0 8px 8px 0;
+                box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                user-select: none;
+            }
+            .drawer-toggle span{
+                font-size: 18px;
+                transition: transform 0.3s ease;
+            }
+            .left-drawer.open .drawer-toggle span{
+                transform: rotate(180deg); /*flips arrow when opened*/
+            }
         </style>
     </head>
     <body>
+        <!--left-side drawer-->
+        <div class="left-drawer" id="leftDrawer">
+            <div class="drawer-toggle" onclick="toggleDrawer()">
+                <span>&#10095;</span>
+            </div>
+            <div class="drawer-wrapper">
+                <h3>Tools & Assets</h3>
+                <p>Add sections, icons, or layout controls here</p>
+            </div>
+        </div>
+
         <div class="a4-card">
             <!-- paper content goes here-->
-             <h2>CV Justin</h2>
-             <p>Add content here...</p>
+            <h2>CV Justin</h2>
+            <p>Add content here...</p>
         </div>
 
         <!--Right-side pulldown-->
@@ -76,5 +140,11 @@
                 <option value="minimal">Minimal Template</option>
             </select>
         </div>
+
+        <script>
+            function toggleDrawer(){
+                document.getElementById('leftDrawer').classList.toggle('open');
+            }
+        </script>
     </body>
 </html>
